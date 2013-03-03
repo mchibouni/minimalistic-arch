@@ -176,6 +176,13 @@ img {
 }
 
 
+
+#page {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+
 /* =Repeatable patterns
 -------------------------------------------------------------- */
 
@@ -488,11 +495,37 @@ body {
 	text-rendering: optimizeLegibility;
 	color: #444;
 }
+
+@font-face{ 
+	font-family: 'swiss721-webfont';
+	src: url('fonts/swiss721-webfont.eot');
+	src: url('fonts/swiss721-webfont.eot?#iefix') format('embedded-opentype'),
+	url('fonts/swiss721-webfont.woff') format('woff'),
+	url('fonts/swiss721-webfont.ttf') format('truetype'),
+	url('fonts/swiss721-webfont.svg#webfont') format('svg');
+}
+
+
 body.custom-font-enabled {
 	/*font-family: "Open Sans", Helvetica, Arial, sans-serif;*/
 	font-family: 'swiss721-webfont';
 }
+
+.parent-menu{
+	font-size: 15px;
+	line-height: 5px;
+}
+
+.depth-menu{
+	position   : relative;
+	left	   : 215px;
+	bottom     : 36px;
+	text-align : left;
+	color  	   : #DFDFDF;
+	width 	   : 300px;
+}
 a {
+	text-decoration: none;
 	outline: none;
 	color: #21759b;
 }
@@ -618,7 +651,7 @@ section[role="banner"] {
 	hyphens: auto;
 	margin-bottom: 48px;
 	margin-bottom: 3.428571429rem;
-	word-wrap: break-word;
+/*	word-wrap: break-word;*/
 }
 .widget-area .widget h3 {
 	margin-bottom: 24px;
@@ -683,8 +716,10 @@ footer[role="contentinfo"] a:hover {
 
 .entry-meta {
 	clear: both;
+	display: none;
 }
 .entry-header {
+	display: none;
 	margin-bottom: 24px;
 	margin-bottom: 1.714285714rem;
 }
@@ -738,6 +773,14 @@ article.sticky .featured-post {
 .mu_register {
 	line-height: 1.714285714;
 }
+
+
+.slider-meta {
+		height: 200px;
+		overflow: auto;
+		padding: 10px;
+}
+
 .entry-content h1,
 .comment-content h1,
 .entry-content h2,
@@ -1432,8 +1475,8 @@ img#wpstats {
 	}
 	.site {
 		margin: 0 auto;
-		max-width: 960px;
-		max-width: 68.571428571rem;
+/*		max-width: 960px;
+		max-width: 68.571428571rem;*/
 		overflow: hidden;
 	}
 	.site-content {
@@ -1447,7 +1490,7 @@ img#wpstats {
 	}
 	.widget-area {
 		float: left;
-		width: 15.041666667%;
+		width: 18.041666667%;
 	}
 	.site-header h1,
 	.site-header h2 {
@@ -1725,13 +1768,5 @@ img#wpstats {
 	.comments-area article header time {
 		margin-left: 50px;
 		margin-left: 3.57142857rem;
-	}
-	@font-face{ 
-		font-family: 'swiss721-webfont';
-		src: url('fonts/swiss721-webfont.eot');
-		src: url('fonts/swiss721-webfont.eot?#iefix') format('embedded-opentype'),
-		url('fonts/swiss721-webfont.woff') format('woff'),
-		url('fonts/swiss721-webfont.ttf') format('truetype'),
-		url('fonts/swiss721-webfont.svg#webfont') format('svg');
 	}
 }
