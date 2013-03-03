@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>jQuery UI Progressbar - Default functionality</title>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="splash.css">
+	<script>
+	$(function() {
+		$("#main").hide();		
+		$("#main").fadeIn(2000);
+		$("#progressbar").progressbar( { value: 1 } );
+		$('#progressbar').css({"height": "10px"});
+		$(".ui-progressbar-value").animate({
+			'width' : '100%'
+		}
+		,
+		{ 
+			duration: 3000,
+			step: function(){
+				$('#loading').text(($(this).width()*100/$("#progressbar").width()).toFixed(2)+"%");
+			},
+			complete: function(){
+				$('#main').fadeOut(null,function(){
+					window.location = "index.php"
+				});
+			}
+		});
+	});
+		</script>
+	</head>
+	<body>
+		<div id="main">
+			<div id="ikbel-arch">
+				<span class="regular bold">Ikbel</span> 
+				<span class="regular">Bouaita</span> 
+				<span class="regular grayed">Architecture</span>
+			</div>
+			<div id="progressbar" data-bind="updateProgress: progress"></div>
+			<span class="loading">Loading</span>
+			<span id ="loading" class="loading" class="regular"></span>
+		</div>
+	</body>
+	</html>
