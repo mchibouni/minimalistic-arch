@@ -509,11 +509,25 @@ body {
 body.custom-font-enabled {
 	/*font-family: "Open Sans", Helvetica, Arial, sans-serif;*/
 	font-family: 'swiss721-webfont';
+	cursor: url(img/cursor.ico), default;
 }
+
+
+.bold {
+        font-weight: bold;
+}
+.regular {
+        font-size: 40px;
+}
+.grayed {
+        color: gray;
+}
+
 
 .parent-menu{
 	font-size: 15px;
 	line-height: 5px;
+	color: #999999;
 }
 
 .depth-menu{
@@ -521,7 +535,6 @@ body.custom-font-enabled {
 	left	   : 215px;
 	bottom     : 36px;
 	text-align : left;
-	color  	   : #DFDFDF;
 	width 	   : 300px;
 }
 a {

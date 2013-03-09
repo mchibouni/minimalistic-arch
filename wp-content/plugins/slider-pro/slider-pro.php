@@ -11,56 +11,60 @@
 
 
 // current version of Slider PRO
-define('SLIDER_PRO_VERSION', '2.0.2');
+	define('SLIDER_PRO_VERSION', '2.0.2');
 
-if (sliderpro_is_slider_pro_admin())
-	include('includes/admin-lists.php');
+	if (sliderpro_is_slider_pro_admin())
+		include('includes/admin-lists.php');
 
-include('includes/general-lists.php');	
-
-
-
-register_activation_hook(__FILE__, 'sliderpro_activate_plugin');
-register_deactivation_hook(__FILE__, 'sliderpro_deactivate_plugin');
-register_uninstall_hook(__FILE__, 'sliderpro_uninstall_plugin');
-
-add_action('wpmu_new_blog', 'sliderpro_new_site_added');
-
-add_action('admin_init', 'sliderpro_admin_init');
-add_action('admin_menu', 'sliderpro_create_menu');
-add_action('admin_menu', 'sliderpro_create_feature_box');
-
-add_action('admin_bar_menu', 'sliderpro_create_admin_bar_links', 70);
-
-add_action('wp', 'sliderpro_get_page_styles');
-add_action('init', 'sliderpro_init');
-add_action('wp_footer', 'sliderpro_load_slider_scripts');
-add_action('wp_enqueue_scripts', 'sliderpro_load_slider_styles');
-
-add_action('save_post', 'sliderpro_save_post_meta');
-
-add_action('wp_ajax_sliderpro_add_new_slides', 'sliderpro_add_new_slides');
-add_action('wp_ajax_sliderpro_duplicate_slide', 'sliderpro_duplicate_slide');
-add_action('wp_ajax_sliderpro_slider_preview', 'sliderpro_slider_preview');
-add_action('wp_ajax_sliderpro_slider_import', 'sliderpro_slider_import');
-add_action('wp_ajax_sliderpro_get_help_text', 'sliderpro_get_help_text');
-add_action('wp_ajax_sliderpro_tinymce_plugin', 'sliderpro_tinymce_plugin');
-add_action('wp_ajax_sliderpro_open_media', 'sliderpro_open_media');
-add_action('wp_ajax_sliderpro_replicate_skin', 'sliderpro_replicate_skin');
-add_action('wp_ajax_sliderpro_refresh_all_skins', 'sliderpro_refresh_all_skins');
-add_action('wp_ajax_sliderpro_show_slider_settings', 'sliderpro_show_slider_settings');
-add_action('wp_ajax_sliderpro_show_slide_settings', 'sliderpro_show_slide_settings');
-add_action('wp_ajax_sliderpro_add_dynamic_fields', 'sliderpro_add_dynamic_fields');
-add_action('wp_ajax_sliderpro_edit_custom_js_css', 'sliderpro_edit_custom_js_css');
-add_action('wp_ajax_sliderpro_save_custom_js_css', 'sliderpro_save_custom_js_css');
-
-add_shortcode('slider_pro', 'slider_pro_shortcode');
-add_shortcode('slide', 'slider_pro_slide_shortcode');
-add_shortcode('slide_element', 'slider_pro_element_shortcode');
+	include('includes/general-lists.php');	
 
 
-include('includes/slider-pro-widget.php');
-include'includes/class.php';
+
+	register_activation_hook(__FILE__, 'sliderpro_activate_plugin');
+	register_deactivation_hook(__FILE__, 'sliderpro_deactivate_plugin');
+	register_uninstall_hook(__FILE__, 'sliderpro_uninstall_plugin');
+
+	add_action('wp_ajax_my_ajax', 'my_ajax');
+	add_action('wp_ajax_nopriv_my_ajax','my_ajax');
+
+
+	add_action('wpmu_new_blog', 'sliderpro_new_site_added');
+
+	add_action('admin_init', 'sliderpro_admin_init');
+	add_action('admin_menu', 'sliderpro_create_menu');
+	add_action('admin_menu', 'sliderpro_create_feature_box');
+
+	add_action('admin_bar_menu', 'sliderpro_create_admin_bar_links', 70);
+
+	add_action('wp', 'sliderpro_get_page_styles');
+	add_action('init', 'sliderpro_init');
+	add_action('wp_footer', 'sliderpro_load_slider_scripts');
+	add_action('wp_enqueue_scripts', 'sliderpro_load_slider_styles');
+
+	add_action('save_post', 'sliderpro_save_post_meta');
+
+	add_action('wp_ajax_sliderpro_add_new_slides', 'sliderpro_add_new_slides');
+	add_action('wp_ajax_sliderpro_duplicate_slide', 'sliderpro_duplicate_slide');
+	add_action('wp_ajax_sliderpro_slider_preview', 'sliderpro_slider_preview');
+	add_action('wp_ajax_sliderpro_slider_import', 'sliderpro_slider_import');
+	add_action('wp_ajax_sliderpro_get_help_text', 'sliderpro_get_help_text');
+	add_action('wp_ajax_sliderpro_tinymce_plugin', 'sliderpro_tinymce_plugin');
+	add_action('wp_ajax_sliderpro_open_media', 'sliderpro_open_media');
+	add_action('wp_ajax_sliderpro_replicate_skin', 'sliderpro_replicate_skin');
+	add_action('wp_ajax_sliderpro_refresh_all_skins', 'sliderpro_refresh_all_skins');
+	add_action('wp_ajax_sliderpro_show_slider_settings', 'sliderpro_show_slider_settings');
+	add_action('wp_ajax_sliderpro_show_slide_settings', 'sliderpro_show_slide_settings');
+	add_action('wp_ajax_sliderpro_add_dynamic_fields', 'sliderpro_add_dynamic_fields');
+	add_action('wp_ajax_sliderpro_edit_custom_js_css', 'sliderpro_edit_custom_js_css');
+	add_action('wp_ajax_sliderpro_save_custom_js_css', 'sliderpro_save_custom_js_css');
+
+	add_shortcode('slider_pro', 'slider_pro_shortcode');
+	add_shortcode('slide', 'slider_pro_slide_shortcode');
+	add_shortcode('slide_element', 'slider_pro_element_shortcode');
+
+
+	include('includes/slider-pro-widget.php');
+	include'includes/class.php';
 
 
 /**
@@ -77,7 +81,7 @@ function sliderpro_activate_plugin() {
 				switch_to_blog($blog_id);
 				sliderpro_activate_plugin_instance();
 			}
-				
+
 			restore_current_blog();
 			return;
 		}
@@ -117,7 +121,7 @@ function sliderpro_uninstall_plugin() {
 			switch_to_blog($blog_id);
 			sliderpro_uninstall_plugin_instance();
 		}
-			
+
 		restore_current_blog();
 		return;
 	}
@@ -143,7 +147,7 @@ function sliderpro_new_site_added($blog_id) {
 	// check if the function exists and include the source file if it doesn't
 	if (!function_exists('is_plugin_active_for_network'))
 		require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-		
+
 	if (is_plugin_active_for_network('slider-pro/slider-pro.php')) {
 		switch_to_blog($blog_id);
 		sliderpro_activate_plugin_instance();
@@ -159,10 +163,10 @@ function sliderpro_is_slider_pro_admin() {
 	if (is_admin() && 
 		(isset($_GET['page']) && in_array($_GET['page'], array('slider_pro', 'slider_pro_new', 'slider_pro_skin_editor', 'slider_pro_plugin_options'))) ||
 		(isset($_GET['action']) && in_array($_GET['action'], array('sliderpro_add_new_slides', 'sliderpro_duplicate_slide', 'sliderpro_slider_preview', 
-																   'sliderpro_slider_import', 'sliderpro_get_help_text','sliderpro_tinymce_plugin', 
-																   'sliderpro_open_media', 'sliderpro_replicate_skin', 'sliderpro_refresh_all_skins', 
-																   'sliderpro_show_slide_settings', 'sliderpro_show_slider_settings', 'sliderpro_add_dynamic_fields',
-																   'sliderpro_edit_custom_js_css', 'sliderpro_save_custom_js_css'))))
+			'sliderpro_slider_import', 'sliderpro_get_help_text','sliderpro_tinymce_plugin', 
+			'sliderpro_open_media', 'sliderpro_replicate_skin', 'sliderpro_refresh_all_skins', 
+			'sliderpro_show_slide_settings', 'sliderpro_show_slider_settings', 'sliderpro_add_dynamic_fields',
+			'sliderpro_edit_custom_js_css', 'sliderpro_save_custom_js_css'))))
 		return true;
 	else 
 		return false;
@@ -179,39 +183,39 @@ function sliderpro_create_menu() {
 	add_menu_page('Slider PRO', 'Slider PRO', $access, 'slider_pro', 'sliderpro_sliders_ui', plugins_url('/slider-pro/css/images/mini-icon.png'));
 	
 	$sliders_page = add_submenu_page('slider_pro', 
-									 __('Slider PRO - Sliders', 'slider_pro'), 
-									 __('Sliders', 'slider_pro'),
-									 $access, 
-									 'slider_pro', 
-									 'sliderpro_sliders_ui');
+		__('Slider PRO - Sliders', 'slider_pro'), 
+		__('Sliders', 'slider_pro'),
+		$access, 
+		'slider_pro', 
+		'sliderpro_sliders_ui');
 	
 	$add_new_page = add_submenu_page('slider_pro', 
-									 __('Slider PRO - Add New', 'slider_pro'), 
-									 __('Add New', 'slider_pro'), 
-									 $access, 
-									 'slider_pro_new', 
-									 'sliderpro_add_new_ui');
+		__('Slider PRO - Add New', 'slider_pro'), 
+		__('Add New', 'slider_pro'), 
+		$access, 
+		'slider_pro_new', 
+		'sliderpro_add_new_ui');
 	
 	$skin_editor_page = add_submenu_page('slider_pro',  
-										 __('Slider PRO - Skin Editor', 'slider_pro'), 
-										 __('Skin Editor', 'slider_pro'), 
-										 $access, 
-										 'slider_pro_skin_editor', 
-										 'sliderpro_skin_editor_ui');
+		__('Slider PRO - Skin Editor', 'slider_pro'), 
+		__('Skin Editor', 'slider_pro'), 
+		$access, 
+		'slider_pro_skin_editor', 
+		'sliderpro_skin_editor_ui');
 	
 	$plugin_options_page = add_submenu_page('slider_pro',  
-											__('Slider PRO - Plugin Options', 'slider_pro'), 
-											__('Plugin Options', 'slider_pro'), 
-											$access, 
-											'slider_pro_plugin_options', 
-											'sliderpro_plugin_options_ui');
-											
+		__('Slider PRO - Plugin Options', 'slider_pro'), 
+		__('Plugin Options', 'slider_pro'), 
+		$access, 
+		'slider_pro_plugin_options', 
+		'sliderpro_plugin_options_ui');
+
 	$help_page = add_submenu_page('slider_pro',  
-								  __('Slider PRO - Help', 'slider_pro'), 
-								  __('Help', 'slider_pro'), 
-								  $access, 
-								  'slider_pro_help', 
-								  'sliderpro_help_ui');
+		__('Slider PRO - Help', 'slider_pro'), 
+		__('Help', 'slider_pro'), 
+		$access, 
+		'slider_pro_help', 
+		'sliderpro_help_ui');
 	
 	add_action("admin_print_scripts-$sliders_page", 'sliderpro_load_admin_scripts');
 	add_action("admin_print_scripts-$add_new_page", 'sliderpro_load_admin_scripts');
@@ -232,7 +236,7 @@ function sliderpro_create_menu() {
 function sliderpro_create_feature_box() {	
 	$post_types_args = array('_builtin' => false);
 	$post_types = array_merge(array('post' => 'post', 'page' => 'page'), get_post_types($post_types_args, 'names'));
-						
+
 	foreach ($post_types as $post_type)
 		add_meta_box('slider-pro-feature-box', __('Slider PRO', 'slider_pro'), 'sliderpro_feature_box_ui', $post_type, 'side');
 }
@@ -249,44 +253,44 @@ function sliderpro_create_admin_bar_links() {
 	$prefix = $wpdb->prefix;
 	
 	$wp_admin_bar->add_menu(array('id' => 'slider_pro_admin_menu', 
-								  'title' => 'Slider PRO', 
-								  'href' => admin_url('admin.php?page=slider_pro')));
+		'title' => 'Slider PRO', 
+		'href' => admin_url('admin.php?page=slider_pro')));
 	
 	$wp_admin_bar->add_menu(array('id' => 'slider_pro_admin_menu_sliders', 
-								  'parent' => 'slider_pro_admin_menu', 
-								  'title' => 'Sliders', 
-								  'href' => admin_url('admin.php?page=slider_pro')));
-								  
+		'parent' => 'slider_pro_admin_menu', 
+		'title' => 'Sliders', 
+		'href' => admin_url('admin.php?page=slider_pro')));
+
 	$wp_admin_bar->add_menu(array('id' => 'slider_pro_admin_menu_add_new', 
-								  'parent' => 'slider_pro_admin_menu', 
-								  'title' => 'Add New', 
-								  'href' => admin_url('admin.php?page=slider_pro_new')));
-								  
+		'parent' => 'slider_pro_admin_menu', 
+		'title' => 'Add New', 
+		'href' => admin_url('admin.php?page=slider_pro_new')));
+
 	$wp_admin_bar->add_menu(array('id' => 'slider_pro_admin_menu_skin_editor', 
-								  'parent' => 'slider_pro_admin_menu', 
-								  'title' => 'Skin Editor', 
-								  'href' => admin_url('admin.php?page=slider_pro_skin_editor')));
-								  
+		'parent' => 'slider_pro_admin_menu', 
+		'title' => 'Skin Editor', 
+		'href' => admin_url('admin.php?page=slider_pro_skin_editor')));
+
 	$wp_admin_bar->add_menu(array('id' => 'slider_pro_admin_menu_plugin_options', 
-								  'parent' => 'slider_pro_admin_menu', 
-								  'title' => 'Plugin Options', 
-								  'href' => admin_url('admin.php?page=slider_pro_plugin_options')));
-								  
+		'parent' => 'slider_pro_admin_menu', 
+		'title' => 'Plugin Options', 
+		'href' => admin_url('admin.php?page=slider_pro_plugin_options')));
+
 	$wp_admin_bar->add_menu(array('id' => 'slider_pro_admin_menu_help', 
-								  'parent' => 'slider_pro_admin_menu', 
-								  'title' => 'Help', 
-								  'href' => admin_url('admin.php?page=slider_pro_help')));
-								  
-										  
+		'parent' => 'slider_pro_admin_menu', 
+		'title' => 'Help', 
+		'href' => admin_url('admin.php?page=slider_pro_help')));
+
+
 	$sliders = $wpdb->get_results("SELECT id, name FROM " . $prefix . "sliderpro_sliders ORDER BY id");
 	
 	if ($sliders)
 		foreach($sliders as $slider)
 			$wp_admin_bar->add_menu(array('id' => 'slider_pro_admin_menu_child' . $slider->id, 
-										  'parent' => 'slider_pro_admin_menu_sliders', 
-										  'title' => stripslashes($slider->name) . ' (' . $slider->id . ')', 
-										  'href' => admin_url('admin.php?page=slider_pro&action=edit&id=' . $slider->id)));
-}
+				'parent' => 'slider_pro_admin_menu_sliders', 
+				'title' => stripslashes($slider->name) . ' (' . $slider->id . ')', 
+				'href' => admin_url('admin.php?page=slider_pro&action=edit&id=' . $slider->id)));
+	}
 
 
 /**
@@ -334,7 +338,7 @@ function sliderpro_load_admin_scripts() {
 	}
 	
 	wp_enqueue_script('slider-pro-admin-js');
-		
+
 	// pass a few variables to the admin javascript file
 	wp_localize_script('slider-pro-admin-js', 'sp_js_vars', array(
 		'delete_slide' => __('Are you sure you want to delete this slide?', 'slider_pro'),
@@ -356,7 +360,7 @@ function sliderpro_load_admin_scripts() {
 		'wp_version' => floatval(get_bloginfo('version')),
 		'url' => plugins_url(),
 		'posts_data' => json_encode(sliderpro_get_posts_data())
-	));
+		));
 }
 
 
@@ -517,7 +521,7 @@ function sliderpro_get_page_styles() {
 				$settings = unserialize($slider_config['settings']);
 				
 				$skin = sliderpro_get_setting($settings, 'skin');
-					
+
 				if (!in_array($skin, $sliderpro_styles_to_load))
 					array_push($sliderpro_styles_to_load, $skin);
 				
@@ -531,8 +535,8 @@ function sliderpro_get_page_styles() {
 				if (sliderpro_get_setting($settings, 'enable_custom_css') && !in_array($slider_config['id'], $sliderpro_styles_to_load))
 					array_push($sliderpro_styles_to_load, $slider_config['id']);
 			}
+		}
 	}
-}
 
 
 /**
@@ -545,7 +549,7 @@ function sliderpro_load_slider_scripts() {
 		return;	
 	
 	echo PHP_EOL . PHP_EOL;
-		
+
 	
 	// load the excanvas script
 	if (in_array('excanvas', $sliderpro_scripts_to_load) && $is_IE) {
@@ -640,7 +644,7 @@ function sliderpro_load_slider_scripts() {
 				wp_register_script('slider-pro-slider-easing-js', plugins_url('/slider-pro/js/slider/jquery.easing.1.3.min.js'));
 			else
 				wp_register_script('slider-pro-slider-easing-js', plugins_url('/slider-pro/js/slider/dev/jquery.easing.1.3.js'));
-				
+
 			wp_print_scripts('slider-pro-slider-easing-js');
 		}
 		
@@ -648,7 +652,7 @@ function sliderpro_load_slider_scripts() {
 			wp_register_script('slider-pro-slider-js', plugins_url('/slider-pro/js/slider/jquery.advancedSlider.min.js'), false, SLIDER_PRO_VERSION);
 		else
 			wp_register_script('slider-pro-slider-js', plugins_url('/slider-pro/js/slider/dev/jquery.advancedSlider.js'), false, SLIDER_PRO_VERSION);
-			
+
 		wp_print_scripts('slider-pro-slider-js');
 	}	
 	
@@ -669,7 +673,7 @@ function sliderpro_load_slider_scripts() {
 */
 function sliderpro_init() {		
 	global $sliderpro_main_skins, $sliderpro_scrollbar_skins, $sliderpro_all_skins, $sliderpro_unique_id, $sliderpro_used_ids, $sliderpro_sliders_js,
-		   $sliderpro_scripts_to_load, $sliderpro_custom_scripts_to_load, $sliderpro_styles_to_load, $sliderpro_lightbox_loaded, $sliderpro_videojs_loaded;	
+	$sliderpro_scripts_to_load, $sliderpro_custom_scripts_to_load, $sliderpro_styles_to_load, $sliderpro_lightbox_loaded, $sliderpro_videojs_loaded;	
 	
 	$sliderpro_main_skins = sliderpro_get_skins('main');
 	$sliderpro_scrollbar_skins = sliderpro_get_skins('scrollbar');
@@ -701,7 +705,7 @@ function sliderpro_init() {
 			global $wpdb;
 			
 			$sliders = $wpdb->get_results("SELECT settings FROM " . $wpdb->prefix . "sliderpro_sliders", ARRAY_A);	
-	
+
 			foreach($sliders as $slider) {
 				$slider_settings = unserialize($slider['settings']);
 				
@@ -750,11 +754,11 @@ function sliderpro_admin_init() {
 				
 				// add the slider to the database
 				$wpdb->insert($wpdb->prefix . 'sliderpro_sliders', array('name' => $name, 
-																		 'settings' => serialize($settings),
-																		 'created' => date('m-d-Y'), 
-																		 'modified' => date('m-d-Y'),
-																		 'panels_state' => serialize($panels_state)), 
-																   array('%s', '%s', '%s', '%s', '%s'));
+					'settings' => serialize($settings),
+					'created' => date('m-d-Y'), 
+					'modified' => date('m-d-Y'),
+					'panels_state' => serialize($panels_state)), 
+				array('%s', '%s', '%s', '%s', '%s'));
 				
 				$sliderpro_current_slider_id = $wpdb->insert_id;
 				
@@ -766,22 +770,22 @@ function sliderpro_admin_init() {
 						
 						if (isset($slide['settings']['dynamic_posts_types']))
 							$slide['settings']['dynamic_posts_types'] = implode(';', array_values($slide['settings']['dynamic_posts_types']));
-							
+
 						if (isset($slide['settings']['dynamic_posts_taxonomies']))
 							$slide['settings']['dynamic_posts_taxonomies'] = implode(';', array_values($slide['settings']['dynamic_posts_taxonomies']));
 						
 						$wpdb->insert($wpdb->prefix . 'sliderpro_slides', array('slider_id' => $sliderpro_current_slider_id,
-																				'name' => $slide['name'],
-																				'settings' => serialize($slide['settings']),
-																				'content' => serialize($slide['content']),
-																				'position' => $slide['position'],
-																				'panel_state' => $slide['panel_state'],
-																				'selected_tab' => $slide['selected_tab'],
-																				'visibility' => $slide['visibility']),
-																		  array('%d', '%s', '%s', '%s', '%d', '%s', '%d', '%s'));
+							'name' => $slide['name'],
+							'settings' => serialize($slide['settings']),
+							'content' => serialize($slide['content']),
+							'position' => $slide['position'],
+							'panel_state' => $slide['panel_state'],
+							'selected_tab' => $slide['selected_tab'],
+							'visibility' => $slide['visibility']),
+						array('%d', '%s', '%s', '%s', '%d', '%s', '%d', '%s'));
 					}
 				}
-			
+
 			} else if ($sliderpro_current_action == 'update') {
 				
 				// get the id of the updated slider
@@ -789,12 +793,12 @@ function sliderpro_admin_init() {
 				
 				// update the slider
 				$wpdb->update($wpdb->prefix . 'sliderpro_sliders', array('name' => $name, 
-																		 'settings' => serialize($settings),
-																		 'modified' => date('m-d-Y'),
-																		 'panels_state' => serialize($panels_state)),
-																   array('id' => $sliderpro_current_slider_id), 
-																   array('%s', '%s', '%s', '%s'), 
-																   array('%d'));
+					'settings' => serialize($settings),
+					'modified' => date('m-d-Y'),
+					'panels_state' => serialize($panels_state)),
+				array('id' => $sliderpro_current_slider_id), 
+				array('%s', '%s', '%s', '%s'), 
+				array('%d'));
 				
 				// to update the slides, first delete them all from the database and then add them again			
 				$wpdb->query("DELETE FROM " . $wpdb->prefix . "sliderpro_slides WHERE slider_id = $sliderpro_current_slider_id");
@@ -806,19 +810,19 @@ function sliderpro_admin_init() {
 						
 						if (isset($slide['settings']['dynamic_posts_types']))
 							$slide['settings']['dynamic_posts_types'] = implode(';', array_values($slide['settings']['dynamic_posts_types']));
-							
+
 						if (isset($slide['settings']['dynamic_posts_taxonomies']))
 							$slide['settings']['dynamic_posts_taxonomies'] = implode(';', array_values($slide['settings']['dynamic_posts_taxonomies']));
 						
 						$wpdb->insert($wpdb->prefix . 'sliderpro_slides', array('slider_id' => $sliderpro_current_slider_id,
-																				'name' => $slide['name'],
-																				'settings' => serialize($slide['settings']),
-																				'content' => serialize($slide['content']),
-																				'position' => $slide['position'],
-																				'panel_state' => $slide['panel_state'],
-																				'selected_tab' => $slide['selected_tab'],
-																				'visibility' => $slide['visibility']),
-																		  array('%d', '%s', '%s', '%s', '%d', '%s', '%d', '%s'));
+							'name' => $slide['name'],
+							'settings' => serialize($slide['settings']),
+							'content' => serialize($slide['content']),
+							'position' => $slide['position'],
+							'panel_state' => $slide['panel_state'],
+							'selected_tab' => $slide['selected_tab'],
+							'visibility' => $slide['visibility']),
+						array('%d', '%s', '%s', '%s', '%d', '%s', '%d', '%s'));
 					}
 				}
 			}			
@@ -842,11 +846,11 @@ function sliderpro_admin_init() {
 			$slider = sliderpro_get_slider($sliderpro_current_slider_id);
 			
 			$wpdb->insert($wpdb->prefix . 'sliderpro_sliders', array('name' => $slider['name'], 
-																	 'settings' => serialize($slider['settings']),
-																	 'created' => date('m-d-Y'), 
-																	 'modified' => date('m-d-Y'),
-																	 'panels_state' => serialize($slider['panels_state'])), 
-															   array('%s', '%s', '%s', '%s', '%s'));
+				'settings' => serialize($slider['settings']),
+				'created' => date('m-d-Y'), 
+				'modified' => date('m-d-Y'),
+				'panels_state' => serialize($slider['panels_state'])), 
+			array('%s', '%s', '%s', '%s', '%s'));
 			
 			$new_id = $wpdb->insert_id;
 			
@@ -855,14 +859,14 @@ function sliderpro_admin_init() {
 			
 			foreach ($slides as $slide) {
 				$wpdb->insert($wpdb->prefix . 'sliderpro_slides', array('slider_id' => $new_id,
-																		'name' => $slide['name'],
-																		'settings' => $slide['settings'],
-																		'content' => $slide['content'],
-																		'position' => $slide['position'],
-																		'panel_state' => $slide['panel_state'],
-																		'selected_tab' => $slide['selected_tab'],
-																		'visibility' => $slide['visibility']),
-																  array('%d', '%s', '%s', '%s', '%d', '%s', '%d', '%s'));
+					'name' => $slide['name'],
+					'settings' => $slide['settings'],
+					'content' => $slide['content'],
+					'position' => $slide['position'],
+					'panel_state' => $slide['panel_state'],
+					'selected_tab' => $slide['selected_tab'],
+					'visibility' => $slide['visibility']),
+				array('%d', '%s', '%s', '%s', '%d', '%s', '%d', '%s'));
 			}		
 			
 			// create the slider XML file
@@ -896,11 +900,11 @@ function sliderpro_admin_init() {
 			
 			// add the slider to the database
 			$wpdb->insert($wpdb->prefix . 'sliderpro_sliders', array('name' => $name, 
-																	 'settings' => serialize($settings),
-																	 'created' => date('m-d-Y'), 
-																	 'modified' => date('m-d-Y'),
-																	 'panels_state' => serialize($panels_state)), 
-															   array('%s', '%s', '%s', '%s', '%s'));
+				'settings' => serialize($settings),
+				'created' => date('m-d-Y'), 
+				'modified' => date('m-d-Y'),
+				'panels_state' => serialize($panels_state)), 
+			array('%s', '%s', '%s', '%s', '%s'));
 			$sliderpro_current_slider_id = $wpdb->insert_id;
 			
 			
@@ -910,7 +914,7 @@ function sliderpro_admin_init() {
 				$custom_css_value = $custom_css->nodeValue;
 				
 				$css_file_path = WP_PLUGIN_DIR . '/slider-pro/custom/slider-pro-' . $sliderpro_current_slider_id . '/slider-pro-' . $sliderpro_current_slider_id . '-custom-css.css';
-	
+
 				if(!file_exists(dirname($css_file_path)))
 					mkdir(dirname($css_file_path), 0777, true);
 				
@@ -924,7 +928,7 @@ function sliderpro_admin_init() {
 				$custom_js_value = $custom_js->nodeValue;
 				
 				$js_file_path = WP_PLUGIN_DIR . '/slider-pro/custom/slider-pro-' . $sliderpro_current_slider_id . '/slider-pro-' . $sliderpro_current_slider_id . '-custom-js.js';
-	
+
 				if(!file_exists(dirname($js_file_path)))
 					mkdir(dirname($js_file_path), 0777, true);
 				
@@ -962,14 +966,14 @@ function sliderpro_admin_init() {
 				
 				// add the slide to the database
 				$wpdb->insert($wpdb->prefix . 'sliderpro_slides', array('slider_id' => $sliderpro_current_slider_id,
-																		'name' => $name,
-																		'settings' => serialize($slide_settings),
-																		'content' => serialize($slide_content),
-																		'position' => $position,
-																		'panel_state' => $panel_state,
-																		'selected_tab' => $selected_tab,
-																		'visibility' => $visibility),
-																  array('%d', '%s', '%s', '%s', '%d', '%s', '%d', '%s'));
+					'name' => $name,
+					'settings' => serialize($slide_settings),
+					'content' => serialize($slide_content),
+					'position' => $position,
+					'panel_state' => $panel_state,
+					'selected_tab' => $selected_tab,
+					'visibility' => $visibility),
+				array('%d', '%s', '%s', '%s', '%d', '%s', '%d', '%s'));
 				
 				unset($slide_settings);
 				unset($slide_content);
@@ -1023,9 +1027,9 @@ function sliderpro_get_posts_data() {
 		
 		// add post type to array
 		$posts_data['post_types'][$post_type->name] = array('post_name' => $post_type->name, 
-															'post_label' => $post_type->label, 
-															'post_taxonomies' => get_object_taxonomies($post_type->name));
-															  
+			'post_label' => $post_type->label, 
+			'post_taxonomies' => get_object_taxonomies($post_type->name));
+
 		array_push($post_types_names, $post_type->name);
 	}
 	
@@ -1041,13 +1045,13 @@ function sliderpro_get_posts_data() {
 		// loop through all terms
 		foreach ($terms as $term)
 			$taxonomy_terms[$term->name] = array('term_name' => $term->name, 
-											  	 'term_slug' => $term->slug, 
-											  	 'term_complete' => $taxonomy->name . '|' . $term->slug);
+				'term_slug' => $term->slug, 
+				'term_complete' => $taxonomy->name . '|' . $term->slug);
 		
 		// add taxonomy to array
 		$posts_data['taxonomies'][$taxonomy->name] = array('taxonomy_name' => $taxonomy->name, 
-														   'taxonomy_label' => $taxonomy->label, 
-														   'taxonomy_terms' => $taxonomy_terms);
+			'taxonomy_label' => $taxonomy->label, 
+			'taxonomy_terms' => $taxonomy_terms);
 	}
 	
 	return $posts_data;
@@ -1082,7 +1086,7 @@ function sliderpro_sliders_ui() {
 	$slides;	
 	$action = $sliderpro_current_action;
 	$slider_id = $sliderpro_current_slider_id;
-		
+
 	if ($sliderpro_current_action == 'delete') {		
 		// display the Sliders page	
 		include('includes/sliders.php');		
@@ -1142,11 +1146,11 @@ function sliderpro_skin_editor_ui() {
 		
 		// create the new header
 		$new_header = '/*' . PHP_EOL .
-					  SP_IND_1 . 'Skin Name: ' . $_POST['replicate-skin-name'] . PHP_EOL .
-					  SP_IND_1 . 'Class: ' . $_POST['replicate-skin-class'] . PHP_EOL .
-					  SP_IND_1 . 'Description: ' . $_POST['replicate-skin-description'] . PHP_EOL .
-					  SP_IND_1 . 'Author: ' . $_POST['replicate-skin-author'] . PHP_EOL .
-					  '*/';
+		SP_IND_1 . 'Skin Name: ' . $_POST['replicate-skin-name'] . PHP_EOL .
+		SP_IND_1 . 'Class: ' . $_POST['replicate-skin-class'] . PHP_EOL .
+		SP_IND_1 . 'Description: ' . $_POST['replicate-skin-description'] . PHP_EOL .
+		SP_IND_1 . 'Author: ' . $_POST['replicate-skin-author'] . PHP_EOL .
+		'*/';
 		
 		$origin_skin = sliderpro_get_skin_by_class($_POST['skin']);		
 		$origin_skin_dir = $origin_skin['container_dir'];
@@ -1200,10 +1204,10 @@ function sliderpro_skin_editor_ui() {
 			sliderpro_refresh_skins(array($skin['type']));
 		}	
 	}
-		
+
 	// read the content at the chosen path	
 	if (is_file($skin_path))
-    	$skin_content = file_get_contents($skin_path);
+		$skin_content = file_get_contents($skin_path);
 	
 	// get the data of the skin
 	$skin_author = $skin['author'];
@@ -1231,22 +1235,22 @@ function sliderpro_plugin_options_ui() {
 			update_option('slider_pro_use_compressed_scripts', true);
 		else
 			update_option('slider_pro_use_compressed_scripts', false);
-				
+
 		if (isset($_POST['slider_pro_progress_animation']))
 			update_option('slider_pro_progress_animation', true);
 		else
 			update_option('slider_pro_progress_animation', false);
-			
+
 		if (isset($_POST['slider_pro_show_admin_bar_links']))
 			update_option('slider_pro_show_admin_bar_links', true);
 		else
 			update_option('slider_pro_show_admin_bar_links', false);							
-			
+
 		if (isset($_POST['slider_pro_enqueue_jquery']))
 			update_option('slider_pro_enqueue_jquery', true);
 		else
 			update_option('slider_pro_enqueue_jquery', false);
-			
+
 		if (isset($_POST['slider_pro_enqueue_bundled_jquery']))
 			update_option('slider_pro_enqueue_bundled_jquery', true);
 		else
@@ -1256,17 +1260,17 @@ function sliderpro_plugin_options_ui() {
 			update_option('slider_pro_enqueue_jquery_easing', true);
 		else
 			update_option('slider_pro_enqueue_jquery_easing', false);			
-			
+
 		if (isset($_POST['slider_pro_enqueue_jquery_mousewheel']))
 			update_option('slider_pro_enqueue_jquery_mousewheel', true);
 		else
 			update_option('slider_pro_enqueue_jquery_mousewheel', false);
-			
+
 		if (isset($_POST['slider_pro_generate_xml_file']))
 			update_option('slider_pro_generate_xml_file', true);
 		else
 			update_option('slider_pro_generate_xml_file', false);
-			
+
 		if (isset($_POST['slider_pro_role_access']))
 			update_option('slider_pro_role_access', $_POST['slider_pro_role_access']);
 	}	
@@ -1299,7 +1303,7 @@ function sliderpro_feature_box_ui() {
 function sliderpro_save_post_meta($post_id) {	
 	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) 
 		return;
-		
+
 	if (isset($_POST['slider-pro-feature-box-nonce']) && !empty($_POST['slider-pro-feature-box-nonce']))	
 		check_admin_referer('slider-pro-feature-box-update', 'slider-pro-feature-box-nonce');
 	
@@ -1390,7 +1394,7 @@ function sliderpro_get_slide_setting($slide_settings, $setting_name, $setting_ty
 */
 function sliderpro_get_slide_content($slide_content, $content_name, $stripslashes = false, $html_decode = false) {
 	$content = (isset($slide_content) && isset($slide_content[$content_name])) ? $slide_content[$content_name] : '';
-		
+
 	return $content != '' ? sliderpro_decode($content, $stripslashes, $html_decode) : '';
 }
 
@@ -1401,10 +1405,10 @@ function sliderpro_get_slide_content($slide_content, $content_name, $stripslashe
 function sliderpro_decode($content, $stripslashes = false, $html_decode = false) {
 	if ($stripslashes)
 		$content = stripslashes($content);
-		
+
 	if ($html_decode)
 		$content = htmlspecialchars_decode($content);
-		
+
 	return $content;
 }
 
@@ -1419,7 +1423,7 @@ function sliderpro_get_panels_state($slider, $panel_name) {
 		$state = isset($slider['panels_state'][$panel_name]) ? $slider['panels_state'][$panel_name] : 'closed';
 	else 
 		$state = ($panel_name == 'publish' || $panel_name == 'general') ? 'opened' : 'closed';
-			
+
 	return $state;
 }
 
@@ -1586,7 +1590,7 @@ function sliderpro_create_slide_setting_field($setting_name, $setting_value, $co
 	$setting_field_control = '';
 	
 	$setting_field_name = '<label title="' . $setting_name . '"><span>' . __($setting['name'], 'slider_pro') . '</span>';
-		
+
 	if ($setting['type'] == 'text') {
 		$setting_field_control .= '<input name="slide[' . $counter . '][settings][' . $setting_name . ']" type="text" value="' . $value . '"/>';
 	} else if ($setting['type'] == 'checkbox') {
@@ -1727,7 +1731,7 @@ function sliderpro_edit_custom_js_css() {
 	
 	if (is_file($file_path)) {
 		$initial_content = file_get_contents($file_path);
-    }
+	}
 	
 	include('includes/edit-custom-js-css.php');
 	
@@ -1741,7 +1745,7 @@ function sliderpro_edit_custom_js_css() {
 function sliderpro_save_custom_js_css() {
 	if (!wp_verify_nonce($_POST['_wpnonce'], 'custom-js-css-edit'))
 		return;
-		
+
 	$id = $_POST['id'];
 	$type = $_POST['type'];
 	$content = $_POST['content'];
@@ -1797,7 +1801,7 @@ function sliderpro_slider_import() {
 function sliderpro_slider_generate_xml($id) {
 	if (!get_option('slider_pro_generate_xml_file'))
 		return;
-		
+
 	global $blog_id;
 	$slider_name;
 	
@@ -1848,7 +1852,7 @@ function sliderpro_slider_generate_xml($id) {
 		$cdata_value = $xml->createCDATASection($custom_css_content);
 		$slider_element->appendChild($cdata_value);
 		$main->appendChild($slider_element);
-    }
+	}
 	
 	
 	if (is_file($js_file_path)) {
@@ -1858,7 +1862,7 @@ function sliderpro_slider_generate_xml($id) {
 		$cdata_value = $xml->createCDATASection($custom_js_content);
 		$slider_element->appendChild($cdata_value);
 		$main->appendChild($slider_element);
-    }
+	}
 	
 	
 	// create the slides wrapper in the XML document
@@ -1918,7 +1922,7 @@ function sliderpro_slider_generate_xml($id) {
 */
 function slider_pro($id, $atts = null, $content = null) {
 	global $sliderpro_slider_settings, $sliderpro_unique_id, $sliderpro_used_ids, $sliderpro_scripts_to_load, $sliderpro_custom_scripts_to_load,
-		   $sliderpro_styles_to_load, $sliderpro_sliders_js, $sliderpro_lightbox_loaded, $sliderpro_videojs_loaded, $sliderpro_js_properties;
+	$sliderpro_styles_to_load, $sliderpro_sliders_js, $sliderpro_lightbox_loaded, $sliderpro_videojs_loaded, $sliderpro_js_properties;
 	
 	// assign an ID for this slider
 	// it will either be the based on the ID that the slider has in the database 
@@ -2012,7 +2016,7 @@ function slider_pro($id, $atts = null, $content = null) {
 		// add the extra slides at the end of the initial slides
 		foreach($slides_extra as $slide_end)
 			array_push($slides, $slide_end);
-			
+
 	} else {
 		foreach($slides as &$slide_s) {
 			$slide_settings = unserialize($slide_s['settings']);
@@ -2027,25 +2031,25 @@ function slider_pro($id, $atts = null, $content = null) {
 	$dynamic_slides = array();
 	
 	$posts_terms_pattern = sliderpro_regex(array('sp_image', 'sp_image_alt', 'sp_image_title', 'sp_image_caption', 'sp_image_description', 'sp_comments_number', 
-												 'sp_comments_link', 'sp_title', 'sp_content', 'sp_excerpt', 'sp_author_name', 'sp_author_posts', 'sp_date', 'sp_link','sp_custom'));
+		'sp_comments_link', 'sp_title', 'sp_content', 'sp_excerpt', 'sp_author_name', 'sp_author_posts', 'sp_date', 'sp_link','sp_custom'));
 	
 	$gallery_terms_pattern = sliderpro_regex(array('sp_image', 'sp_image_alt', 'sp_image_title', 'sp_image_caption', 'sp_image_description'));
 	
-												 
+
 	foreach($slides as $slide) {
 		// check if the slide is set to automatically fetch post dara
 		if (sliderpro_get_slide_setting($slide['settings'], 'slide_type', 'dynamic') == 'posts' && $slide['visibility'] == 'enabled') {
 			
 			$slide_settings = $slide['settings'];
 			$slide_content = $slide['content'];
-						
+
 			foreach($slide_content as $key => $value)
 				$slide_content[$key] = sliderpro_decode($value, true, true);
 			
 			
 			// construct the argument of the Query object
 			$dynamic_slide_args = array();
-						
+
 			
 			if (isset($slide_settings['dynamic_posts_types'])) {
 				$dynamic_post_types = explode(';', $slide_settings['dynamic_posts_types']);
@@ -2087,7 +2091,7 @@ function slider_pro($id, $atts = null, $content = null) {
 			
 			$slide_dynamic_terms = array();
 			$has_image = false;
-					
+
 			// get all the dynamic terms used in the content fields
 			foreach ($slide_content as $key => $value) {
 				if ($value != '') {
@@ -2153,20 +2157,20 @@ function slider_pro($id, $atts = null, $content = null) {
 						$image_id = get_post_thumbnail_id();
 					} else {
 						$children_args = array(
-											'post_status' => 'inherit', 
-											'post_type' => 'attachment', 
-											'post_mime_type' => 'image', 
-											'post_parent' => get_the_ID(),
-											'numberposts' => 1,
-											'orderby' => 'menu_order',
-											'order' => 'ASC'
-										 );
-									  
+							'post_status' => 'inherit', 
+							'post_type' => 'attachment', 
+							'post_mime_type' => 'image', 
+							'post_parent' => get_the_ID(),
+							'numberposts' => 1,
+							'orderby' => 'menu_order',
+							'order' => 'ASC'
+							);
+
 						$image_item = get_children($children_args, ARRAY_A);
 						
 						if ($image_item)
 							$image_item = array_values($image_item);
-							
+
 						$image_id = $image_item[0]['ID'];
 					}
 					
@@ -2194,21 +2198,21 @@ function slider_pro($id, $atts = null, $content = null) {
 									$image_src = wp_get_attachment_image_src($image_id, $image_size);
 									
 									$replace = sliderpro_get_real_path($image_src[0]);
-																	
+
 								} else if ($term_data['term_name'] == 'sp_image_alt') {		
-																							
+
 									$replace = $image_data['alt'];
 									
 								} else if ($term_data['term_name'] == 'sp_image_title') {	
-																
+
 									$replace = $image_data['post_title'];
-																	
+
 								} else if ($term_data['term_name'] == 'sp_image_caption') {	
-																
+
 									$replace = $image_data['post_excerpt'];
 									
 								} else if ($term_data['term_name'] == 'sp_image_description') {	
-																
+
 									$replace = $image_data['post_content'];
 									
 								} else if ($term_data['term_name'] == 'sp_title') {
@@ -2239,7 +2243,7 @@ function slider_pro($id, $atts = null, $content = null) {
 									$zero = isset($term_data['zero']) ? $term_data['zero'] : false;
 									
 									$number = get_comments_number();
-	
+
 									if ($number > 1)
 										$replace = str_replace('%', $number, $more === false ? __('% Comments') : $more);
 									else if ($number == 0)
@@ -2286,7 +2290,7 @@ function slider_pro($id, $atts = null, $content = null) {
 										
 										$replace = isset($values[$index]) ? $values[$index] : '';
 									}
-																		
+
 								}								
 								
 								// replace all the current terms in the field with the corresponding content
@@ -2314,7 +2318,7 @@ function slider_pro($id, $atts = null, $content = null) {
 			foreach($slide_content as $key => $value)
 				$slide_content[$key] = sliderpro_decode($value, true, true);
 			
-							
+
 			$gallery_post_id;
 			
 			// if the post is set to '-1' only display the content if it's inside the loop
@@ -2323,25 +2327,25 @@ function slider_pro($id, $atts = null, $content = null) {
 				continue;
 			else 
 				$gallery_post_id = $slide_settings['dynamic_gallery_post'] == -1 ? get_the_ID() : $slide_settings['dynamic_gallery_post'];
-				
-				
+
+
 			// get the images from the post's gallery
 			$children_args = array(
-								'post_status' => 'inherit', 
-								'post_type' => 'attachment', 
-								'post_mime_type' => 'image', 
-								'post_parent' => $gallery_post_id,
-								'numberposts' => $slide_settings['dynamic_gallery_maximum'],
-								'orderby' => 'menu_order',
-								'order' => 'ASC'
-							 );							 
+				'post_status' => 'inherit', 
+				'post_type' => 'attachment', 
+				'post_mime_type' => 'image', 
+				'post_parent' => $gallery_post_id,
+				'numberposts' => $slide_settings['dynamic_gallery_maximum'],
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
+				);							 
 			
-						 
+
 			$gallery_images =  array_splice(array_values(get_children($children_args, ARRAY_A)), $slide_settings['dynamic_gallery_offset']);
 			
 			
 			$slide_dynamic_terms = array();
-					
+
 			// get all the dynamic terms used in the content fields
 			foreach ($slide_content as $key => $value) {
 				if ($value != '') {
@@ -2387,7 +2391,7 @@ function slider_pro($id, $atts = null, $content = null) {
 				$dynamic_slide['position'] = $slide['position'];
 				$dynamic_slide['visibility'] = $slide['visibility'];
 				
-			
+
 				// loop through all content fields
 				foreach ($dynamic_slide['content'] as $field_name => &$field_content) {					
 					if ($field_content != '') {
@@ -2405,22 +2409,22 @@ function slider_pro($id, $atts = null, $content = null) {
 									$image_src = wp_get_attachment_image_src($image['ID'], $image_size);
 									
 									$replace = sliderpro_get_real_path($image_src[0]);
-																	
+
 								} else if ($term_data['term_name'] == 'sp_image_alt') {		
 									
 									$image_alt = get_post_meta($image['ID'], '_wp_attachment_image_alt');
 									$replace = !empty($image_alt) ? $image_alt[0] : '';
 									
 								} else if ($term_data['term_name'] == 'sp_image_title') {	
-																
+
 									$replace = $image['post_title'];
-																	
+
 								} else if ($term_data['term_name'] == 'sp_image_caption') {	
-																
+
 									$replace = $image['post_excerpt'];
 									
 								} else if ($term_data['term_name'] == 'sp_image_description') {	
-																
+
 									$replace = $image['post_content'];
 									
 								}
@@ -2485,7 +2489,7 @@ function slider_pro($id, $atts = null, $content = null) {
 	
 	if (sliderpro_get_setting($slider_settings, 'enable_custom_js') && !in_array($current_id, $sliderpro_custom_scripts_to_load))
 		array_push($sliderpro_custom_scripts_to_load, $current_id);
-		
+
 	if (sliderpro_get_setting($slider_settings, 'timer_animation') && !in_array('excanvas', $sliderpro_scripts_to_load))
 		array_push($sliderpro_scripts_to_load, 'excanvas');
 	
@@ -2500,13 +2504,13 @@ function slider_pro($id, $atts = null, $content = null) {
 	
 	if (sliderpro_get_setting($slider_settings, 'youtube_controller') && !in_array('youtube_controller', $sliderpro_scripts_to_load))
 		array_push($sliderpro_scripts_to_load, 'youtube_controller');
-		
+
 	if (sliderpro_get_setting($slider_settings, 'vimeo_controller') && !in_array('vimeo_controller', $sliderpro_scripts_to_load))
 		array_push($sliderpro_scripts_to_load, 'vimeo_controller');
-		
+
 	if (sliderpro_get_setting($slider_settings, 'html5_controller') && !in_array('html5_controller', $sliderpro_scripts_to_load))
 		array_push($sliderpro_scripts_to_load, 'html5_controller');
-		
+
 	if (sliderpro_get_setting($slider_settings, 'videojs_controller') && !in_array('videojs_controller', $sliderpro_scripts_to_load))
 		array_push($sliderpro_scripts_to_load, 'videojs_controller');
 	
@@ -2566,173 +2570,173 @@ function slider_pro($id, $atts = null, $content = null) {
 	}
 	
 	$js_string .= SP_IND_1 . 'jQuery(document).ready(function() {' . PHP_EOL;
-	$js_string .= SP_IND_2 . 'jQuery("#slider-pro-' . $current_id . '").advancedSlider({' . PHP_EOL;
-	$js_string .= $slider_js_properties;
-	
-	if ($slides_js_properties != '') {
-		if ($slider_js_properties != '')
-			$js_string .= ', ' . PHP_EOL;	
-		
-		$js_string .= SP_IND_3 . 'slideProperties: {' . PHP_EOL . $slides_js_properties . PHP_EOL . SP_IND_3 . '}'. PHP_EOL;	
-	} else {
-		$js_string .= PHP_EOL;
-	}
-	
-	$js_string .= SP_IND_2 . '});' . PHP_EOL;
-	
-	$js_string .= SP_IND_1 . '});' . PHP_EOL;
-	$js_string .= '</script>' . PHP_EOL;
-	
-	// to be printed in foother
-	$sliderpro_sliders_js .= $js_string;
-	
-	$slider_classes = sliderpro_get_setting($slider_settings, 'custom_class') != '' ? 'advanced-slider ' . sliderpro_get_setting($slider_settings, 'custom_class') : 'advanced-slider';
-	
-	// create the HTML output
-	$html_string = '';
-	$html_string .= '<div class="' . $slider_classes . '" id="slider-pro-' . $current_id . '" tabindex="0">' . PHP_EOL;	
-	$html_string .= SP_IND_1 . '<ul class="slides">' . PHP_EOL;	
-	
-	$slider_width = sliderpro_get_setting($slider_settings, 'width');
-	$slider_height = sliderpro_get_setting($slider_settings, 'height');
-	
-	foreach($slides as $slide) {
-		if (isset($slide['visibility']) && $slide['visibility'] == 'disabled')
-			continue;			
-			
-		$slide_content = $slide['content'];
-		$slide_settings = $slide['settings'];
-		
-		$slide_width = sliderpro_get_setting($slider_settings, 'slide_resizing_width') == 'auto' ? (strpos($slider_width, '%') ? 500 : $slider_width) : 
-																			 			 			sliderpro_get_setting($slider_settings, 'slide_resizing_width');
-		
-		$slide_height = sliderpro_get_setting($slider_settings, 'slide_resizing_height') == 'auto' ? (strpos($slider_height, '%') ? 300 : $slider_height) : 
-																			   						  sliderpro_get_setting($slider_settings, 'slide_resizing_height');
-		
-		$timthumb_image_path = (get_option('slider_pro_enable_timthumb') && sliderpro_get_setting($slider_settings, 'slide_resizing_resize')) ? 
-		esc_attr(plugins_url('/slider-pro/includes/timthumb/timthumb.php').'?q=' . sliderpro_get_setting($slider_settings, 'slide_resizing_quality').
-																		   '&w=' . $slide_width.
-																		   '&h=' . $slide_height.
-																		   '&a=' . sliderpro_get_setting($slider_settings, 'slide_resizing_align').
-																		   '&zc=' . sliderpro_get_setting($slider_settings, 'slide_resizing_crop').
-																		   '&src=') : '';
-		
-		$timthumb_thumbnails_path = (get_option('slider_pro_enable_timthumb') && sliderpro_get_setting($slider_settings, 'thumbnail_resizing_resize')) ? 
-		esc_attr(plugins_url('/slider-pro/includes/timthumb/timthumb.php').'?q=' . sliderpro_get_setting($slider_settings, 'thumbnail_resizing_quality').
-																		   '&w=' . sliderpro_get_setting($slider_settings, 'thumbnail_width').
-																		   '&h=' . sliderpro_get_setting($slider_settings, 'thumbnail_height').
-																		   '&a=' . sliderpro_get_setting($slider_settings, 'thumbnail_resizing_align').
-																		   '&zc=' . sliderpro_get_setting($slider_settings, 'thumbnail_resizing_crop').
-																		   '&src=') : '';
-		
-		
-		$lazy_loaded_image = ($slide_content['image'] != '' && sliderpro_get_setting($slider_settings, 'lazy_loading')) ? 
-							  'data-image="' . $timthumb_image_path . $slide_content['image'] . '"' : '';
-		
-		$html_string .= SP_IND_2 . '<li class="slide" ' . $lazy_loaded_image . '>' . PHP_EOL;
-		
-		
-		// get the link specified for the slide
-		$slide_link_path = sliderpro_get_slide_content($slide_content, 'slide_link_path');
-		
-		if ($slide_link_path != '') {
-			$slide_link_target = sliderpro_get_slide_setting($slide_settings, 'slide_link_target', 'extra');
-			
-			$slide_link_title = sliderpro_get_slide_content($slide_content, 'slide_link_title');
-			$slide_link_title = $slide_link_title != '' ? ' title="' . $slide_link_title . '"' : '';
-			
-			$slide_lightbox_content = sliderpro_get_slide_setting($slide_settings, 'slide_link_lightbox', 'extra') ? 
-									  sliderpro_get_setting($slider_settings, 'lightbox_gallery') ? ' rel="slider-lightbox[slider-pro-slide-' . $current_id . ']"' : 
-								  																	' rel="slider-lightbox"' :
-									  '';
-			
-			$html_string .= SP_IND_3 . '<a' . $slide_lightbox_content . ' href="' . $slide_link_path . '" target="' . $slide_link_target . '"' . $slide_link_title . ' tabindex="-1">' . PHP_EOL;
-		}
-		
-		// get the slide image
-		$slide_image = isset($slide_content['image']) ? $slide_content['image'] : '';
-		
-		if ($slide_image != '') {
-			$slide_image = $lazy_loaded_image == '' ? $timthumb_image_path . $slide_image : '';
-			
-			$slide_title = isset($slide_content['title']) ? $slide_content['title'] : '';
-			$slide_title = $slide_title != '' ? ' title="' . $slide_title . '"' : '';
-			
-			$image_indentation = $slide_link_path != '' ? SP_IND_4 : SP_IND_3;
-			
-			$slide_alt = isset($slide_content['alt']) ? $slide_content['alt'] : '';
-			
-			$html_string .= $image_indentation . '<img class="image" src="' . $slide_image . '" alt="' . $slide_alt . '"' . $slide_title . '/>' . PHP_EOL;
-		}
-		
-		// end the slide link
-		if ($slide_link_path != '')
-			$html_string .= SP_IND_3 . '</a>' . PHP_EOL;
-		
-		
-		// get the slide caption
-		$slide_caption = sliderpro_get_slide_content($slide_content, 'caption');
-		
-		if ($slide_caption != '')
-			$html_string .= SP_IND_3 . '<div class="caption">' . do_shortcode(sliderpro_decode($slide_caption, true, true)) . '</div>' . PHP_EOL;
-		
-		
-		// get the slide inline HTML content
-		$slide_html = sliderpro_get_slide_content($slide_content, 'html');
-		
-		if ($slide_html != '')
-			$html_string .= SP_IND_3 . '<div class="html">' . do_shortcode(sliderpro_decode($slide_html, true, true)) . '</div>' . PHP_EOL;
-		
-		
-		// get the thumbnail type
-		$thumbnail_type = sliderpro_get_setting($slider_settings, 'thumbnail_type');
-		
-		if ($thumbnail_type != 'none') {
-			// get the thumbnail image
-			$thumbnail_path = sliderpro_get_slide_content($slide_content, 'thumbnail_image') != '' ? $slide_content['thumbnail_image'] : $slide_content['image'];
-			
-			if ($thumbnail_path != '') {
-				$thumbnail_title = isset($slide_content['thumbnail_title']) ? $slide_content['thumbnail_title'] : '';
-				$thumbnail_title = $thumbnail_title != '' ? ' title="' . $thumbnail_title . '"' : '';
-				
-				$thumbnail_link_path = sliderpro_get_slide_content($slide_content, 'thumbnail_link_path');
-				
-				$thumbnail_indentation = $thumbnail_link_path != '' ? SP_IND_4 : SP_IND_3;
-				
-				// get the thumbnail link
-				if ($thumbnail_link_path != '') {
-					$thumbnail_link_target = sliderpro_get_slide_setting($slide_settings, 'thumbnail_link_target');
-					
-					$thumbnail_link_title = sliderpro_get_slide_content($slide_content, 'thumbnail_link_title');
-					$thumbnail_link_title = $thumbnail_link_title != '' ? ' title="' . $thumbnail_link_title . '"' : '';
-					
-					$thumbnail_lightbox_content = sliderpro_get_slide_setting($slide_settings, 'thumbnail_link_lightbox', 'extra') ? 
-												  sliderpro_get_setting($slider_settings, 'lightbox_gallery') ? ' rel="slider-lightbox[slider-pro-thumbnail-' . $current_id . ']"' : 
-																												' rel="slider-lightbox"' :
-												  '';
-					
-					$html_string .= SP_IND_3 . 
-					'<a' . $thumbnail_lightbox_content . ' href="' . $thumbnail_link_path . '" target="' . $thumbnail_link_target . '"' . $thumbnail_link_title . ' tabindex="-1">' . PHP_EOL;
-				}
-				
-				$thumbnail_alt = isset($slide_content['thumbnail_alt']) ? $slide_content['thumbnail_alt'] : '';
-				
-				$html_string .= $thumbnail_indentation . 
-								'<img class="thumbnail" src="' . $timthumb_thumbnails_path . $thumbnail_path . '" alt="' . $thumbnail_alt . '"' . $thumbnail_title . '/>' . PHP_EOL;
-				
-				// end the thumbnail link
-				if ($thumbnail_link_path != '')
-					$html_string .= SP_IND_3 . '</a>' . PHP_EOL;
-			}
-		}
-		
-		$html_string .= SP_IND_2 . '</li>' . PHP_EOL;
-	}
-	
-	$html_string .= SP_IND_1 . '</ul>' . PHP_EOL;	
-	$html_string .= '</div>';
+		$js_string .= SP_IND_2 . 'jQuery("#slider-pro-' . $current_id . '").advancedSlider({' . PHP_EOL;
+			$js_string .= $slider_js_properties;
 
-	return PHP_EOL . PHP_EOL . $html_string . PHP_EOL . PHP_EOL;
+			if ($slides_js_properties != '') {
+				if ($slider_js_properties != '')
+					$js_string .= ', ' . PHP_EOL;	
+
+				$js_string .= SP_IND_3 . 'slideProperties: {' . PHP_EOL . $slides_js_properties . PHP_EOL . SP_IND_3 . '}'. PHP_EOL;	
+			} else {
+				$js_string .= PHP_EOL;
+			}
+
+			$js_string .= SP_IND_2 . '});' . PHP_EOL;
+
+$js_string .= SP_IND_1 . '});' . PHP_EOL;
+$js_string .= '</script>' . PHP_EOL;
+
+	// to be printed in foother
+$sliderpro_sliders_js .= $js_string;
+
+$slider_classes = sliderpro_get_setting($slider_settings, 'custom_class') != '' ? 'advanced-slider ' . sliderpro_get_setting($slider_settings, 'custom_class') : 'advanced-slider';
+
+	// create the HTML output
+$html_string = '';
+$html_string .= '<div class="' . $slider_classes . '" id="slider-pro-' . $current_id . '" tabindex="0">' . PHP_EOL;	
+$html_string .= SP_IND_1 . '<ul class="slides">' . PHP_EOL;	
+
+$slider_width = sliderpro_get_setting($slider_settings, 'width');
+$slider_height = sliderpro_get_setting($slider_settings, 'height');
+
+foreach($slides as $slide) {
+	if (isset($slide['visibility']) && $slide['visibility'] == 'disabled')
+		continue;			
+
+	$slide_content = $slide['content'];
+	$slide_settings = $slide['settings'];
+
+	$slide_width = sliderpro_get_setting($slider_settings, 'slide_resizing_width') == 'auto' ? (strpos($slider_width, '%') ? 500 : $slider_width) : 
+	sliderpro_get_setting($slider_settings, 'slide_resizing_width');
+
+	$slide_height = sliderpro_get_setting($slider_settings, 'slide_resizing_height') == 'auto' ? (strpos($slider_height, '%') ? 300 : $slider_height) : 
+	sliderpro_get_setting($slider_settings, 'slide_resizing_height');
+
+	$timthumb_image_path = (get_option('slider_pro_enable_timthumb') && sliderpro_get_setting($slider_settings, 'slide_resizing_resize')) ? 
+	esc_attr(plugins_url('/slider-pro/includes/timthumb/timthumb.php').'?q=' . sliderpro_get_setting($slider_settings, 'slide_resizing_quality').
+		'&w=' . $slide_width.
+		'&h=' . $slide_height.
+		'&a=' . sliderpro_get_setting($slider_settings, 'slide_resizing_align').
+		'&zc=' . sliderpro_get_setting($slider_settings, 'slide_resizing_crop').
+		'&src=') : '';
+
+	$timthumb_thumbnails_path = (get_option('slider_pro_enable_timthumb') && sliderpro_get_setting($slider_settings, 'thumbnail_resizing_resize')) ? 
+	esc_attr(plugins_url('/slider-pro/includes/timthumb/timthumb.php').'?q=' . sliderpro_get_setting($slider_settings, 'thumbnail_resizing_quality').
+		'&w=' . sliderpro_get_setting($slider_settings, 'thumbnail_width').
+		'&h=' . sliderpro_get_setting($slider_settings, 'thumbnail_height').
+		'&a=' . sliderpro_get_setting($slider_settings, 'thumbnail_resizing_align').
+		'&zc=' . sliderpro_get_setting($slider_settings, 'thumbnail_resizing_crop').
+		'&src=') : '';
+
+
+	$lazy_loaded_image = ($slide_content['image'] != '' && sliderpro_get_setting($slider_settings, 'lazy_loading')) ? 
+	'data-image="' . $timthumb_image_path . $slide_content['image'] . '"' : '';
+
+	$html_string .= SP_IND_2 . '<li class="slide" ' . $lazy_loaded_image . '>' . PHP_EOL;
+
+
+		// get the link specified for the slide
+	$slide_link_path = sliderpro_get_slide_content($slide_content, 'slide_link_path');
+
+	if ($slide_link_path != '') {
+		$slide_link_target = sliderpro_get_slide_setting($slide_settings, 'slide_link_target', 'extra');
+
+		$slide_link_title = sliderpro_get_slide_content($slide_content, 'slide_link_title');
+		$slide_link_title = $slide_link_title != '' ? ' title="' . $slide_link_title . '"' : '';
+
+		$slide_lightbox_content = sliderpro_get_slide_setting($slide_settings, 'slide_link_lightbox', 'extra') ? 
+		sliderpro_get_setting($slider_settings, 'lightbox_gallery') ? ' rel="slider-lightbox[slider-pro-slide-' . $current_id . ']"' : 
+		' rel="slider-lightbox"' :
+		'';
+
+		$html_string .= SP_IND_3 . '<a' . $slide_lightbox_content . ' href="' . $slide_link_path . '" target="' . $slide_link_target . '"' . $slide_link_title . ' tabindex="-1">' . PHP_EOL;
+	}
+
+		// get the slide image
+	$slide_image = isset($slide_content['image']) ? $slide_content['image'] : '';
+
+	if ($slide_image != '') {
+		$slide_image = $lazy_loaded_image == '' ? $timthumb_image_path . $slide_image : '';
+
+		$slide_title = isset($slide_content['title']) ? $slide_content['title'] : '';
+		$slide_title = $slide_title != '' ? ' title="' . $slide_title . '"' : '';
+
+		$image_indentation = $slide_link_path != '' ? SP_IND_4 : SP_IND_3;
+
+		$slide_alt = isset($slide_content['alt']) ? $slide_content['alt'] : '';
+
+		$html_string .= $image_indentation . '<img class="image" src="' . $slide_image . '" alt="' . $slide_alt . '"' . $slide_title . '/>' . PHP_EOL;
+	}
+
+		// end the slide link
+	if ($slide_link_path != '')
+		$html_string .= SP_IND_3 . '</a>' . PHP_EOL;
+
+
+		// get the slide caption
+	$slide_caption = sliderpro_get_slide_content($slide_content, 'caption');
+
+	if ($slide_caption != '')
+		$html_string .= SP_IND_3 . '<div class="caption">' . do_shortcode(sliderpro_decode($slide_caption, true, true)) . '</div>' . PHP_EOL;
+
+
+		// get the slide inline HTML content
+	$slide_html = sliderpro_get_slide_content($slide_content, 'html');
+
+	if ($slide_html != '')
+		$html_string .= SP_IND_3 . '<div class="html">' . do_shortcode(sliderpro_decode($slide_html, true, true)) . '</div>' . PHP_EOL;
+
+
+		// get the thumbnail type
+	$thumbnail_type = sliderpro_get_setting($slider_settings, 'thumbnail_type');
+
+	if ($thumbnail_type != 'none') {
+			// get the thumbnail image
+		$thumbnail_path = sliderpro_get_slide_content($slide_content, 'thumbnail_image') != '' ? $slide_content['thumbnail_image'] : $slide_content['image'];
+
+		if ($thumbnail_path != '') {
+			$thumbnail_title = isset($slide_content['thumbnail_title']) ? $slide_content['thumbnail_title'] : '';
+			$thumbnail_title = $thumbnail_title != '' ? ' title="' . $thumbnail_title . '"' : '';
+
+			$thumbnail_link_path = sliderpro_get_slide_content($slide_content, 'thumbnail_link_path');
+
+			$thumbnail_indentation = $thumbnail_link_path != '' ? SP_IND_4 : SP_IND_3;
+
+				// get the thumbnail link
+			if ($thumbnail_link_path != '') {
+				$thumbnail_link_target = sliderpro_get_slide_setting($slide_settings, 'thumbnail_link_target');
+
+				$thumbnail_link_title = sliderpro_get_slide_content($slide_content, 'thumbnail_link_title');
+				$thumbnail_link_title = $thumbnail_link_title != '' ? ' title="' . $thumbnail_link_title . '"' : '';
+
+				$thumbnail_lightbox_content = sliderpro_get_slide_setting($slide_settings, 'thumbnail_link_lightbox', 'extra') ? 
+				sliderpro_get_setting($slider_settings, 'lightbox_gallery') ? ' rel="slider-lightbox[slider-pro-thumbnail-' . $current_id . ']"' : 
+				' rel="slider-lightbox"' :
+				'';
+
+				$html_string .= SP_IND_3 . 
+				'<a' . $thumbnail_lightbox_content . ' href="' . $thumbnail_link_path . '" target="' . $thumbnail_link_target . '"' . $thumbnail_link_title . ' tabindex="-1">' . PHP_EOL;
+			}
+
+			$thumbnail_alt = isset($slide_content['thumbnail_alt']) ? $slide_content['thumbnail_alt'] : '';
+
+			$html_string .= $thumbnail_indentation . 
+			'<img class="thumbnail" src="' . $timthumb_thumbnails_path . $thumbnail_path . '" alt="' . $thumbnail_alt . '"' . $thumbnail_title . '/>' . PHP_EOL;
+
+				// end the thumbnail link
+			if ($thumbnail_link_path != '')
+				$html_string .= SP_IND_3 . '</a>' . PHP_EOL;
+		}
+	}
+
+	$html_string .= SP_IND_2 . '</li>' . PHP_EOL;
+}
+
+$html_string .= SP_IND_1 . '</ul>' . PHP_EOL;	
+$html_string .= '</div>';
+
+return PHP_EOL . PHP_EOL . $html_string . PHP_EOL . PHP_EOL;
 }
 
 
@@ -2741,8 +2745,8 @@ function slider_pro($id, $atts = null, $content = null) {
 */
 function slider_pro_shortcode($atts, $content = null) {
 	extract(shortcode_atts(array(
-				'id' => '-1',
-	), $atts));	
+		'id' => '-1',
+		), $atts));	
 	
 	return slider_pro($id, $atts, $content);
 }
@@ -2760,33 +2764,33 @@ function slider_pro_slide_shortcode($atts, $content = null) {
 	if($atts)
 		foreach($atts as $key => $value)
 			$attributes[$key] = $value;
-	
-	$slide = array();
-	
-	$slide_content = do_shortcode($content);	
-	$slide_content = str_replace('<br />', '', $slide_content);	
-	$slide_content_elements = explode('%sp_sep%', $slide_content);
-	
-	
+
+		$slide = array();
+
+		$slide_content = do_shortcode($content);	
+		$slide_content = str_replace('<br />', '', $slide_content);	
+		$slide_content_elements = explode('%sp_sep%', $slide_content);
+
+
 	// get the content of the slide
-	foreach($slide_content_elements as $element) {
-		$element = unserialize(trim($element));		
-		
-		if ($element)
-			foreach($element as $key => $value)
-				$slide['content'][$key] = $value;
-	}
-	
-	$settings = array();
-	
+		foreach($slide_content_elements as $element) {
+			$element = unserialize(trim($element));		
+
+			if ($element)
+				foreach($element as $key => $value)
+					$slide['content'][$key] = $value;
+			}
+
+			$settings = array();
+
 	// get the slide's settings
-	foreach($attributes as $key => $value)
-		$settings[$key] = $value;		
-	
-	$slide['settings'] = $settings;
-	
-	return serialize($slide) . '%sp_sep%';
-}
+			foreach($attributes as $key => $value)
+				$settings[$key] = $value;		
+
+			$slide['settings'] = $settings;
+
+			return serialize($slide) . '%sp_sep%';
+		}
 
 
 /**
@@ -2837,7 +2841,7 @@ function sliderpro_refresh_skins($skin_types) {
 	
 	foreach ($skin_types as $type) {
 		$skins_root_dir = WP_PLUGIN_DIR . '/slider-pro/skins/' . $type;
-	
+
 		$directory = new RecursiveDirectoryIterator($skins_root_dir);
 		$iterator = new RecursiveIteratorIterator($directory);
 		$iterator->setMaxDepth(2);
@@ -2857,16 +2861,16 @@ function sliderpro_refresh_skins($skin_types) {
 			$skin_meta = sliderpro_get_skin_meta($path);
 			$skin_url = plugins_url('slider-pro/skins/' . $type . '/' . $file_directory . '/' . $file_name);
 			$skin_container_dir = $skins_root_dir . '/' . $file_directory;
-					
+
 			$wpdb->insert($wpdb->prefix . 'sliderpro_skins', array('type' => $type,
-																   'path' => $path,
-																   'name' =>  $skin_meta['Skin Name'],
-																   'class' =>  $skin_meta['Class'],
-																   'description' =>  $skin_meta['Description'],
-																   'author' =>  $skin_meta['Author'],
-																   'url' => $skin_url,
-																   'container_dir' => $skin_container_dir),
-														     array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'));
+				'path' => $path,
+				'name' =>  $skin_meta['Skin Name'],
+				'class' =>  $skin_meta['Class'],
+				'description' =>  $skin_meta['Description'],
+				'author' =>  $skin_meta['Author'],
+				'url' => $skin_url,
+				'container_dir' => $skin_container_dir),
+			array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'));
 		}
 	}
 }
@@ -2886,8 +2890,8 @@ function sliderpro_get_skins($type) {
 		foreach($skins_raw as $skin)
 			array_push($skins, $skin);
 
-	return $skins;
-}
+		return $skins;
+	}
 
 
 /**
@@ -2914,7 +2918,7 @@ function sliderpro_get_skin_by_class($name) {
 	foreach ($sliderpro_all_skins as $skin)
 		if ($skin['class'] == $name)
 			return $skin;
-}
+	}
 
 
 /**
@@ -2932,7 +2936,7 @@ function sliderpro_get_all_skins_used() {
 			$settings = unserialize($slider_config['settings']);
 			
 			$skin = sliderpro_get_setting($settings, 'skin');
-				
+
 			if (!in_array($skin, $skins))
 				array_push($skins, $skin);
 			
@@ -2947,8 +2951,8 @@ function sliderpro_get_all_skins_used() {
 				array_push($skins, $slider_config['id']);
 		}
 		
-	return $skins;
-}
+		return $skins;
+	}
 
 
 /**
@@ -2959,14 +2963,14 @@ function sliderpro_replicate_skin_dir($origin, $destination, $new_name, $old_nam
 	$origin_handle = opendir($origin);
 	
 	$success = @mkdir($destination . '/' . $new_name);
-   	
+
 	if (!$success)
 		return false;
 	
 	while ($resource = readdir($origin_handle)) {
 		if ($resource == '.' || $resource == '..')
 			continue;
-       
+
 		if (is_dir($origin . '/' . $resource)) {
 			sliderpro_replicate_skin_dir($origin . '/' . $resource, $destination, $new_name . '/' . $resource);
 		} else {
@@ -3013,8 +3017,8 @@ function sliderpro_regex($terms) {
 		.         '\\/(?!\\])'               // A forward slash not followed by a closing bracket
 		.         '[^\\]\\/]*'               // Not a closing bracket or forward slash
 		.     ')*?'
-		. ')'
-		. '(?:'
+. ')'
+. '(?:'
 		.     '(\\/)'                        // 4: Self closing tag ...
 		.     '\\]'                          // ... and closing bracket
 		. '|'
@@ -3026,12 +3030,12 @@ function sliderpro_regex($terms) {
 		.                 '\\[(?!\\/\\2\\])' // An opening bracket not followed by the closing shortcode tag
 		.                 '[^\\[]*+'         // Not an opening bracket
 		.             ')*+'
-		.         ')'
+.         ')'
 		.         '\\[\\/\\2\\]'             // Closing shortcode tag
 		.     ')?'
-		. ')'
+. ')'
 		. '(\\]?)';                          // 6: Optional second closing brocket for escaping shortcodes: [[tag]]
-}
+	}
 
 
 /*
@@ -3066,5 +3070,13 @@ function sliderpro_get_real_path($initial_path) {
 function sliderpro_is_old_ie() {
 	return preg_match('/MSIE [1-8]/', $_SERVER['HTTP_USER_AGENT']);
 };
+
+function my_ajax() {
+	$my_id = 1;
+	$post_id_7 = get_post($my_id,$output); 
+	$title = $post_id_7->post_content;
+	echo $title;
+	die();
+}
 
 ?>
