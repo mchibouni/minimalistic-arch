@@ -111,7 +111,7 @@
 	<div id="ikbel-arch">
 	<span class="regular bold">IKBAL</span> 
 	<span class="regular">BOUAITA</span> 
-	<span class="regular grayed">ARCHITECTURE</span>
+	<span class="regular grayed">  ARCHITECTURE</span>
 	</div>
 	</hgroup>
 

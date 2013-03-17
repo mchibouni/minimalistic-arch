@@ -536,8 +536,8 @@ a {
 
 .depth-menu{
 	position   : relative;
-	left	   : 215px;
-	bottom     : 36px;
+	left	   : 238px;
+	bottom     : 25px;
 	text-align : left;
 	width 	   : 300px;
 }
@@ -1015,7 +1015,7 @@ img.aligncenter {
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	hyphens: auto;
-	margin-left: 163px;
+	margin-left: 80px;
 }
 .page-links {
 	clear: both;
@@ -1498,7 +1498,7 @@ img#wpstats {
 	}
 	.site-content {
 		float: right;
-		width: 65.104166667%;
+		width: 52.104166667%;
 	}
 	body.template-front-page .site-content,
 	body.single-attachment .site-content,
@@ -1507,7 +1507,7 @@ img#wpstats {
 	}
 	.widget-area {
 		float: left;
-		width: 18.041666667%;
+		width: 19.341666667%;
 	}
 	.site-header h1,
 	.site-header h2 {
