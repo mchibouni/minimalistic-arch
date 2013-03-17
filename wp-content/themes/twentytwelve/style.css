@@ -509,7 +509,11 @@ body {
 body.custom-font-enabled {
 	/*font-family: "Open Sans", Helvetica, Arial, sans-serif;*/
 	font-family: 'swiss721-webfont';
-	cursor: url(img/cursor.ico), default;
+	cursor: url(img/cursor.ico), pointer;
+}
+
+a {
+	cursor: url(img/cursor.ico), pointer;
 }
 
 
@@ -577,7 +581,7 @@ a:hover {
 }
 .site-content {
 	margin: 24px 0 0;
-	margin: 1.714285714rem 0 0;
+	margin: 4.2rem 0 0;
 }
 .widget-area {
 	margin: 24px 0 0;
@@ -1003,7 +1007,6 @@ img.aligncenter {
 	padding: 6px 10px 6px 0;
 }
 .site-content article {
-	border-bottom: 4px double #ededed;
 	margin-bottom: 72px;
 	margin-bottom: 5.142857143rem;
 	padding-bottom: 24px;
@@ -1012,6 +1015,7 @@ img.aligncenter {
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	hyphens: auto;
+	margin-left: 163px;
 }
 .page-links {
 	clear: both;

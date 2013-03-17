@@ -22,7 +22,7 @@
 /* SLIDE ARROWS */
 
 .minimal-dark .slide-arrows a {
-	background: url(images/arrows.png) no-repeat;
+	/*background: url(images/arrows.png) no-repeat;*/
 	width: 64px;
 	height: 64px;
 	top: 50%;
@@ -31,13 +31,14 @@
 
 
 .minimal-dark .slide-arrows a.previous {
-	left: 0;
+	left: -80px;
+	background: url(images/leftarrow.png) no-repeat center;
 }
 
 
 .minimal-dark .slide-arrows a.next {
-	right: 0;
-	background-position: -64px 0;
+	right: -80px;
+	background: url(images/rightarrow.png) no-repeat center;
 }
 
 /* SLIDE ARROWS */

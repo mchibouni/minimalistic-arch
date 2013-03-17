@@ -14,6 +14,17 @@
     <preload_nearby_images>0</preload_nearby_images>
     <shuffle>0</shuffle>
     <slide_start>0</slide_start>
+    <slideshow>0</slideshow>
+    <slideshow_controls_toggle>0</slideshow_controls_toggle>
+    <keyboard_navigation_on_focus_only>0</keyboard_navigation_on_focus_only>
+    <slide_arrows_toggle>0</slide_arrows_toggle>
+    <slide_arrows_hide_duration>500</slide_arrows_hide_duration>
+    <slide_buttons>1</slide_buttons>
+    <timer_animation>0</timer_animation>
+    <timer_animation_controls>0</timer_animation_controls>
+    <effect_type>fade</effect_type>
+    <initial_effect>1</initial_effect>
+    <slice_effect_type>fade</slice_effect_type>
     <custom_class/>
     <enable_custom_js>0</enable_custom_js>
     <enable_custom_css>0</enable_custom_css>
@@ -21,11 +32,11 @@
   <panels_state>
     <publish>opened</publish>
     <general>opened</general>
-    <slideshow>closed</slideshow>
-    <slide_navigation_controls>closed</slide_navigation_controls>
+    <slideshow>opened</slideshow>
+    <slide_navigation_controls>opened</slide_navigation_controls>
     <lightbox>closed</lightbox>
-    <timer_animation>closed</timer_animation>
-    <transition_effects>closed</transition_effects>
+    <timer_animation>opened</timer_animation>
+    <transition_effects>opened</transition_effects>
     <thumbnails>closed</thumbnails>
     <captions>closed</captions>
     <video>closed</video>
@@ -35,7 +46,7 @@
   </panels_state>
   <slides>
     <slide>
-      <id>13</id>
+      <id>35</id>
       <slider_id>1</slider_id>
       <name><![CDATA[Slide1]]></name>
       <content>
@@ -65,7 +76,7 @@
       <visibility>enabled</visibility>
     </slide>
     <slide>
-      <id>14</id>
+      <id>36</id>
       <slider_id>1</slider_id>
       <name><![CDATA[Slide2]]></name>
       <content>

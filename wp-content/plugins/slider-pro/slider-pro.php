@@ -46,6 +46,7 @@
 	add_action('wp_ajax_sliderpro_add_new_slides', 'sliderpro_add_new_slides');
 	add_action('wp_ajax_sliderpro_duplicate_slide', 'sliderpro_duplicate_slide');
 	add_action('wp_ajax_sliderpro_slider_preview', 'sliderpro_slider_preview');
+	add_action('wp_ajax_nopriv_sliderpro_slider_preview', 'sliderpro_slider_preview');	
 	add_action('wp_ajax_sliderpro_slider_import', 'sliderpro_slider_import');
 	add_action('wp_ajax_sliderpro_get_help_text', 'sliderpro_get_help_text');
 	add_action('wp_ajax_sliderpro_tinymce_plugin', 'sliderpro_tinymce_plugin');
@@ -3072,7 +3073,7 @@ function sliderpro_is_old_ie() {
 };
 
 function my_ajax() {
-	$my_id = 1;
+	$my_id = $_POST['id'];
 	$post_id_7 = get_post($my_id,$output); 
 	$title = $post_id_7->post_content;
 	echo $title;

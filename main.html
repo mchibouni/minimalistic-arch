@@ -12,7 +12,7 @@
 		$("#main").hide();		
 		$("#main").fadeIn(2000);
 		$("#progressbar").progressbar( { value: 1 } );
-		$('#progressbar').css({"height": "10px"});
+		$('#progressbar').css({"height": "2px","border":"none","color":"black"});
 		$(".ui-progressbar-value").animate({
 			'width' : '100%'
 		}
@@ -20,7 +20,7 @@
 		{ 
 			duration: 3000,
 			step: function(){
-				$('#loading').text(($(this).width()*100/$("#progressbar").width()).toFixed(2)+"%");
+				$('#loading').text("Loading "+ ($(this).width()*100/$("#progressbar").width()).toFixed(2)+"%");
 			},
 			complete: function(){
 				$('#main').fadeOut(null,function(){
@@ -39,7 +39,6 @@
 				<span class="regular grayed">ARCHITECTURE</span>
 			</div>
 			<div id="progressbar" data-bind="updateProgress: progress"></div>
-			<span class="loading">Loading</span>
 			<span id ="loading" class="loading" class="regular"></span>
 		</div>
 	</body>

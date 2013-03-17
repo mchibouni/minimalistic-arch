@@ -20,6 +20,9 @@ body {
 	font-family: 'swiss721-webfont';
 	font-size: 40px;
 }
+#main{
+	font-size: 0;
+}
 .bold {
 	font-weight: bold;
 }
@@ -30,6 +33,7 @@ body {
 	color: gray; 
 }
 .loading  {
+	float: right;
 	text-align: right;
-	font-size: 15px;
+	font-size: 10px;
 }
