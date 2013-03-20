@@ -1016,6 +1016,8 @@ img.aligncenter {
 	-moz-hyphens: auto;
 	hyphens: auto;
 	margin-left: 80px;
+	height: 50px;
+	overflow: auto;  
 }
 .page-links {
 	clear: both;
