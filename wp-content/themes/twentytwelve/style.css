@@ -581,7 +581,7 @@ a:hover {
 }
 .site-content {
 	margin: 24px 0 0;
-	margin: 4.2rem 0 0;
+	margin: 1.5rem 0 0;
 }
 .widget-area {
 	margin: 24px 0 0;
@@ -788,7 +788,7 @@ article.sticky .featured-post {
 .entry-content,
 .entry-summary,
 .mu_register {
-	line-height: 1.714285714;
+	/*line-height: 1.714285714;*/
 }
 
 
@@ -825,7 +825,7 @@ article.sticky .featured-post {
 .mu_register h2 {
 	font-size: 18px;
 	font-size: 1.285714286rem;
-	line-height: 1.6;
+	/*line-height: 1.6;*/
 }
 .entry-content h3,
 .comment-content h3 {
@@ -855,16 +855,16 @@ article.sticky .featured-post {
 .entry-summary p,
 .comment-content p,
 .mu_register p {
-	margin: 0 0 24px;
-	margin: 0 0 1.714285714rem;
-	line-height: 1.714285714;
+	margin: -15px 0 24px;
+	margin: -0.5 0 1.114285714rem;
+/*	line-height: 1.714285714;*/
 }
 .entry-content ol,
 .comment-content ol,
 .entry-content ul,
 .comment-content ul,
 .mu_register ul {
-	margin: 0 0 24px;
+	margin: -15 0 24px;
 	margin: 0 0 1.714285714rem;
 	line-height: 1.714285714;
 }
@@ -943,7 +943,7 @@ article.sticky .featured-post {
 .comment-content address {
 	display: block;
 	line-height: 1.714285714;
-	margin: 0 0 24px;
+	margin: -15 0 24px;
 	margin: 0 0 1.714285714rem;
 }
 img.alignleft {
@@ -1497,6 +1497,8 @@ img#wpstats {
 		overflow: hidden;
 	}
 	.site-content {
+		overflow: hidden;
+		min-height: 450px;
 		float: right;
 		width: 52.104166667%;
 	}
