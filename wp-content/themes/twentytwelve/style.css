@@ -1016,8 +1016,10 @@ img.aligncenter {
 	-moz-hyphens: auto;
 	hyphens: auto;
 	margin-left: 80px;
-	height: 50px;
-	overflow: auto;  
+	height: 120px;
+	overflow: auto;
+	outline: none;
+	border: none;  
 }
 .page-links {
 	clear: both;

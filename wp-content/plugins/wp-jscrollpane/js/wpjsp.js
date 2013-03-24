@@ -1,1 +1,1 @@
-var $j = jQuery.noConflict();$j(function(){jQuery(document).ready(function($){$('.post').jScrollPane({'showArrows': true,'verticalArrowPositions':'split','horizontalArrowPositions':'split',});});});
+var $j = jQuery.noConflict();$j(function(){jQuery(document).ready(function($){$('article.post').jScrollPane({'showArrows': true,'verticalArrowPositions':'split','horizontalArrowPositions':'split','horizontalGutter':10,'verticalGutter':10,});});});

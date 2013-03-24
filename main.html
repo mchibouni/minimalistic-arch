@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Ikbal Bouaita Architecture</title>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/black-tie/jquery-ui.css" />
 	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 	<link rel="stylesheet" type="text/css" href="splash.css">
@@ -23,9 +23,9 @@
 				$('#loading').text("Loading "+ ($(this).width()*100/$("#progressbar").width()).toFixed(0)+"%");
 			},
 			complete: function(){
-	/*			$('#main').fadeOut(null,function(){
+				$('#main').fadeOut(null,function(){
 					window.location = "index.php"
-				});*/
+				});
 			}
 		});
 	});
