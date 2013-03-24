@@ -53,10 +53,13 @@
 				sliderId = $('[id*=slider-pro-].advanced-slider').attr('id').match(/[0-9]+/g).toString();
 				$('<div/>',{'id':'arch-slider'}).prependTo('#content');
 				$('#arch-slider').load('../wordpress/wp-admin/admin-ajax.php?action=sliderpro_slider_preview&id='+sliderId,function(){
+					$('article').css('width','505px');
 					$('#comments').remove();
 					$('#content').find('.nav-single').remove();	
 				});
-				$('#content').fadeIn('slow');
+				$('#content').fadeIn('slow',function(){
+					$('.post').jScrollPane();
+				});
 			});
 		}
 	}
@@ -79,6 +82,7 @@
 		parentMenu.children('a').addClass('parent-menu');
 		depthMenu.addClass('depth-menu');
 		depthMenu.children('a').addClass('parent-menu').css('color','#D9D9D9');
+
 
 		$('#menu-ikbelarch-1').children().find('a').not('.parent-menu').each(function(){
 			$(this).css('color','#333333');
